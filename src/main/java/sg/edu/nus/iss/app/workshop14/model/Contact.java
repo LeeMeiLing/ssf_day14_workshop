@@ -38,7 +38,7 @@ public class Contact implements Serializable {
     private int age;
 
     public Contact(){
-
+        this.id = generateId(8);
     }
 
     public Contact(String name, String email, String phoneNumber, LocalDate dateOfBirth) {
@@ -107,7 +107,7 @@ public class Contact implements Serializable {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         int calculateAge = 0;
         if(null != dateOfBirth){
-            Period.between(dateOfBirth, LocalDate.now()).getYears();
+            calculateAge = Period.between(dateOfBirth, LocalDate.now()).getYears();
         }
         this.dateOfBirth = dateOfBirth;
         this.age = calculateAge;

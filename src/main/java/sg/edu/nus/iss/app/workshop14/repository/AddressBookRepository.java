@@ -15,7 +15,7 @@ public class AddressBookRepository {
     public void save(final Contact ctc){
 
         redisTemplate.opsForList().leftPush("contactlist", ctc.getId());
-        redisTemplate.opsForHash().put("addressbook", ctc.getId(), ctc);
+        redisTemplate.opsForHash().put("addressbookmap", ctc.getId(), ctc);
 
     }
 
@@ -34,7 +34,7 @@ public class AddressBookRepository {
             .map(Contact.class::cast)
             .toList();
 
-        return null;
+        return ctcs;
     }
 
 }
